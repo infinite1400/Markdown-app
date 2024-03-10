@@ -27,8 +27,9 @@ const NoteForm = ({ onSubmit , onAddTag , availableTags }: NoteFormProps) => {
             // Type narrowing of string | undefined type to string by two methods 
             title: titleRef.current?.value as string,
             markdown: markdownRef.current?.value ?? "",
-            tags: []
+            tags: selectedTags,
         })
+        navigate("..")
     }
     return (
         <Form onSubmit={handleSubmit} >

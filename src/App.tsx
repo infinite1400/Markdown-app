@@ -7,6 +7,8 @@ import NewNote from "./NewNote";
 import useLocalStorage from "./useLocalStorage";
 import { useMemo } from "react";
 import NoteList from "./NoteList";
+import NoteLayout from "./NoteLayout";
+import Note from "./Note";
 
 // Types 
 export type Note = {
@@ -56,10 +58,10 @@ const App = () => {
   return (
     <Container className="my-4">
       <Routes>
-        <Route path="/" element={<NoteList availableTags={tags}/>} />
+        <Route path="/" element={<NoteList notes={noteWithTags}availableTags={tags}/>} />
         <Route path="/new" element={<NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags} />} />
-        <Route path="/:id">
-          <Route index element={<h1>Show</h1>} />
+        <Route path="/:id" element={<NoteLayout notes={noteWithTags} />} >
+          <Route index element={<Note/>} />
           <Route path="edit" element={<h1>Edit</h1>} />
         </Route>
         <Route path="*" element={<Navigate to='/' />} />

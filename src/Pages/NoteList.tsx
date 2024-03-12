@@ -2,13 +2,16 @@ import React, { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Badge, Button, Card, Col, Form, Modal, Row, Stack } from 'react-bootstrap'
 import ReactSelect from 'react-select'
-import { Note, Tag } from './App'
-import styles from "./NoteList.module.css"
+import {Tag} from '../App'
+import styles from "../css/NoteList.module.css"
+
+// Types
 type SimplifiedNote = {
     tags: Tag[]
     id: string
     title: string
 }
+
 type NoteListProps = {
     availableTags: Tag[]
     notes: SimplifiedNote[]

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Note } from './App'
+import { Note } from '../App'
 import { Navigate, Outlet, useOutletContext, useParams } from 'react-router-dom'
 
 type NoteLayoutProps={

@@ -3,6 +3,7 @@ import { useNote } from '../Pages/NoteLayout'
 import { Badge, Button, Col, Row, Stack } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from "react-markdown"
+// import { Note } from '../App';
 
 type NoteProps = {
     onDelete: (id: string) => void
@@ -10,6 +11,14 @@ type NoteProps = {
 const Note = ({ onDelete }: NoteProps) => {
     const navigate = useNavigate();
     const note = useNote();
+
+    const handleDelete = (id: string) => {
+        if (window.confirm("Are  you sure to delete this note?")) {
+            onDelete(id);
+            navigate('/');
+        }
+    }
+
     return (
         <>
             <Row className='align-items-center mb-4'>
@@ -34,10 +43,7 @@ const Note = ({ onDelete }: NoteProps) => {
                         <Link to={`/${note.id}/edit`}>
                             <Button variant="primary">Edit</Button>
                         </Link>
-                        <Button variant='outline-danger' onClick={() => {
-                            onDelete(note.id)
-                            navigate("/")
-                        }}>Delete</Button>
+                        <Button variant='outline-danger' onClick={() => handleDelete(note.id)}>Delete</Button>
                         <Link to={'..'}>
                             <Button variant="outline-secondary">Back</Button></Link>
                     </Stack>

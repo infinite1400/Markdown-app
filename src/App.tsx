@@ -13,13 +13,14 @@ import useLocalStorage from "./Components/useLocalStorage";
 import Note from "./Components/Note";
 
 // Types 
+export type NoteData = {
+  title: string,
+  markdown: string
+  tags: Tag[]
+}
 export type Note = {
   id: string
 } & NoteData
-
-export type RawNote = {
-  id: string
-} & RawNoteData
 
 export type RawNoteData = {
   title: string,
@@ -27,11 +28,10 @@ export type RawNoteData = {
   tagIds: string[]
 }
 
-export type NoteData = {
-  title: string,
-  markdown: string
-  tags: Tag[]
-}
+export type RawNote = {
+  id: string
+} & RawNoteData
+
 
 export type Tag = {
   id: string

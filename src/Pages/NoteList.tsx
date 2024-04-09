@@ -1,8 +1,8 @@
-import React, { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Badge, Button, Card, Col, Form, Modal, Row, Stack } from 'react-bootstrap'
 import ReactSelect from 'react-select'
-import {Tag} from '../App'
+import { Tag } from '../App'
 import styles from "../css/NoteList.module.css"
 
 // Types
@@ -10,6 +10,8 @@ type SimplifiedNote = {
     tags: Tag[]
     id: string
     title: string
+    markdown : string
+    tagIds : string[]
 }
 
 type NoteListProps = {
@@ -107,8 +109,12 @@ const NoteList = ({
 }
 
 export default NoteList
-
-const NoteCard = ({ id, title, tags }: SimplifiedNote) => {
+type NoteCardProps={
+    id : string
+    title : string
+    tags : Tag[]
+}
+const NoteCard = ({ id, title, tags }: NoteCardProps) => {
     return (
         <Card as={Link} to={`/${id}`} className={`h-100 text-reset text-decoration-none ${styles.card}`}>
             <Card.Body>
